@@ -6,68 +6,12 @@
     <meta name="monetag" content="25da4530d2041748b9509b3201e449a8">
     <title>Task Verification</title>
     <style>
-        body { 
-            text-align: center; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f0f2f5; 
-            margin: 0; 
-            padding: 0; 
-        }
-        .header-box {
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        body { text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; }
+        .header-box { background-color: #fff; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         h2 { color: #333; margin-top: 0;}
-        #timer { 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: #d9534f; 
-            padding: 10px;
-            background-color: #ffeaea;
-            border-radius: 8px;
-            display: inline-block;
-        }
-        .content-area {
-            min-height: 150vh; 
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .ad-placeholder {
-            width: 90%;
-            max-width: 320px;
-            height: 250px;
-            background-color: #e0e0e0;
-            border: 2px dashed #999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-        #claimBtn { 
-            display: none; 
-            padding: 18px 40px; 
-            font-size: 22px; 
-            font-weight: bold;
-            background-color: #28a745; 
-            color: white; 
-            border: none; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            margin: 40px auto;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
-            transition: background-color 0.3s;
-        }
-        #claimBtn:hover { background-color: #218838; }
+        #timer { font-size: 28px; font-weight: bold; color: #d9534f; padding: 10px; background-color: #ffeaea; border-radius: 8px; display: inline-block; }
+        .content-area { min-height: 150vh; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: space-around; }
+        #claimBtn { display: none; padding: 18px 40px; font-size: 22px; font-weight: bold; background-color: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; margin: 40px auto; text-decoration: none; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); }
         .instructions { color: #555; font-size: 16px; margin-bottom: 20px;}
     </style>
 </head>
@@ -81,64 +25,25 @@
     <div class="content-area">
         <p class="instructions" id="inst1">Please stay on this page and scroll down until the claim button appears.</p>
         
-        <!-- Ad Placeholder 1 -->
-        <div class="ad-placeholder">
-            Ad Space 1
-        </div>
+        <!-- كود إعلانات Monetag الخاص بك -->
+        <script>(function(s){s.dataset.zone='11903878',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
         <p class="instructions" id="inst2">The button will appear at the bottom of the page after the timer ends.</p>
-
-        <!-- Ad Placeholder 2 -->
-        <div class="ad-placeholder">
-             Ad Space 2
-        </div>
         
         <a id="claimBtn" href="https://t.me/Hellspotbot?start=claim">🎁 Claim Points & Return 🎁</a>
     </div>
 
     <script>
-        // نظام الترجمة التلقائية
         const translations = {
-            ar: {
-                title: "أكمل المهمة لاستلام النقاط",
-                remain: "يتبقى: ",
-                sec: " ثانية",
-                stop: "العداد متوقف! عد للصفحة",
-                done: "✅ اكتمل الوقت! انزل للأسفل",
-                inst1: "يرجى البقاء في هذه الصفحة (لا تغلقها) والتمرير للأسفل حتى يظهر زر الاستلام.",
-                inst2: "الزر سيظهر في أسفل الصفحة بعد انتهاء العداد.",
-                claim: "🎁 استلام النقاط والعودة للبوت 🎁",
-                dir: "rtl"
-            },
-            ru: {
-                title: "Завершите задание для получения очков",
-                remain: "Осталось: ",
-                sec: " секунд",
-                stop: "Таймер остановлен! Вернитесь",
-                done: "✅ Время вышло! Прокрутите вниз",
-                inst1: "Оставайтесь на этой странице и прокрутите вниз, пока не появится кнопка.",
-                inst2: "Кнопка появится внизу страницы после окончания таймера.",
-                claim: "🎁 Получить очки и вернуться 🎁",
-                dir: "ltr"
-            },
-            en: {
-                title: "Complete the task to get points",
-                remain: "Remaining: ",
-                sec: " seconds",
-                stop: "Timer stopped! Return to page",
-                done: "✅ Time's up! Scroll down",
-                inst1: "Please stay on this page and scroll down until the claim button appears.",
-                inst2: "The button will appear at the bottom of the page after the timer ends.",
-                claim: "🎁 Claim Points & Return 🎁",
-                dir: "ltr"
-            }
+            ar: { title: "أكمل المهمة لاستلام النقاط", remain: "يتبقى: ", sec: " ثانية", stop: "العداد متوقف! عد للصفحة", done: "✅ اكتمل الوقت! انزل للأسفل", inst1: "يرجى البقاء في هذه الصفحة والتمرير للأسفل حتى يظهر الزر.", inst2: "الزر سيظهر في أسفل الصفحة.", claim: "🎁 استلام النقاط والعودة 🎁", dir: "rtl" },
+            ru: { title: "Завершите задание", remain: "Осталось: ", sec: " секунд", stop: "Таймер остановлен!", done: "✅ Время вышло! Прокрутите вниз", inst1: "Оставайтесь на странице и прокрутите вниз.", inst2: "Кнопка появится внизу.", claim: "🎁 Получить очки 🎁", dir: "ltr" },
+            en: { title: "Complete the task", remain: "Remaining: ", sec: " seconds", stop: "Timer stopped!", done: "✅ Time's up! Scroll down", inst1: "Stay on this page and scroll down.", inst2: "The button will appear at the bottom.", claim: "🎁 Claim Points & Return 🎁", dir: "ltr" }
         };
 
         const userLang = navigator.language || navigator.userLanguage;
         let lang = 'en';
         if (userLang.startsWith('ar')) lang = 'ar';
         else if (userLang.startsWith('ru')) lang = 'ru';
-
         const t = translations[lang];
 
         document.documentElement.lang = lang;
@@ -159,11 +64,9 @@
             if (document.hidden) {
                 isTabActive = false;
                 timerElement.innerText = t.stop;
-                timerElement.style.color = "#856404";
                 timerElement.style.backgroundColor = "#fff3cd";
             } else {
                 isTabActive = true;
-                timerElement.style.color = "#d9534f";
                 timerElement.style.backgroundColor = "#ffeaea";
                 timerElement.innerText = t.remain + timeLeft + t.sec;
             }
@@ -174,16 +77,13 @@
                 timeLeft--;
                 timerElement.innerText = t.remain + timeLeft + t.sec;
             }
-            
             if (timeLeft <= 0) {
                 clearInterval(countdown);
                 timerElement.innerText = t.done;
-                timerElement.style.color = "#155724";
                 timerElement.style.backgroundColor = "#d4edda";
                 claimBtn.style.display = 'block'; 
             }
         }, 1000);
     </script>
-
 </body>
 </html>
