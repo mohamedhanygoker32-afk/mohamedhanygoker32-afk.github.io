@@ -16,14 +16,16 @@
     </style>
 </head>
 <body>
+
     <div class="header-box">
         <h2 id="titleText">Complete the task to get points</h2>
         <div id="timer">Remaining: 40 seconds</div>
     </div>
+
     <div class="content-area">
         <p class="instructions" id="inst1">Please stay on this page and scroll down until the claim button appears.</p>
         
-        <!-- كود الإعلان -->
+        <!-- كود إعلانات Monetag الخاص بك -->
         <script>(function(s){s.dataset.zone='11903878',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
         <p class="instructions" id="inst2">The button will appear at the bottom of the page after the timer ends.</p>
@@ -32,21 +34,14 @@
     </div>
 
     <script>
-        // سحب التوكن من الرابط لتأمين زر الاستلام
+        // سحب التوكن من الرابط
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
-        const claimBtn = document.getElementById('claimBtn');
-        
-        if (token) {
-            claimBtn.href = `https://t.me/Hellspotbot?start=claim_${token}`;
-        } else {
-            claimBtn.href = `https://t.me/Hellspotbot`; // إذا حاول الدخول بدون توكن
-        }
 
         const translations = {
-            ar: { title: "أكمل المهمة لاستلام النقاط", remain: "يتبقى: ", sec: " ثانية", stop: "العداد متوقف!", done: "✅ اكتمل الوقت! انزل للأسفل", inst1: "يرجى البقاء في هذه الصفحة والتمرير للأسفل.", inst2: "الزر سيظهر في أسفل الصفحة.", claim: "🎁 استلام النقاط 🎁", dir: "rtl" },
+            ar: { title: "أكمل المهمة لاستلام النقاط", remain: "يتبقى: ", sec: " ثانية", stop: "العداد متوقف! عد للصفحة", done: "✅ اكتمل الوقت! انزل للأسفل", inst1: "يرجى البقاء في هذه الصفحة والتمرير للأسفل حتى يظهر الزر.", inst2: "الزر سيظهر في أسفل الصفحة.", claim: "🎁 استلام النقاط والعودة 🎁", dir: "rtl" },
             ru: { title: "Завершите задание", remain: "Осталось: ", sec: " секунд", stop: "Таймер остановлен!", done: "✅ Время вышло! Прокрутите вниз", inst1: "Оставайтесь на странице и прокрутите вниз.", inst2: "Кнопка появится внизу.", claim: "🎁 Получить очки 🎁", dir: "ltr" },
-            en: { title: "Complete the task", remain: "Remaining: ", sec: " seconds", stop: "Timer stopped!", done: "✅ Time's up! Scroll down", inst1: "Stay on this page and scroll down.", inst2: "The button will appear at the bottom.", claim: "🎁 Claim Points 🎁", dir: "ltr" }
+            en: { title: "Complete the task", remain: "Remaining: ", sec: " seconds", stop: "Timer stopped!", done: "✅ Time's up! Scroll down", inst1: "Stay on this page and scroll down.", inst2: "The button will appear at the bottom.", claim: "🎁 Claim Points & Return 🎁", dir: "ltr" }
         };
 
         const userLang = navigator.language || navigator.userLanguage;
@@ -60,11 +55,16 @@
         document.getElementById('titleText').innerText = t.title;
         document.getElementById('inst1').innerText = t.inst1;
         document.getElementById('inst2').innerText = t.inst2;
-        claimBtn.innerText = t.claim;
+        document.getElementById('claimBtn').innerText = t.claim;
+
+        // تجهيز رابط الزرار ليحتوي على التوكن
+        const claimBtn = document.getElementById('claimBtn');
+        claimBtn.href = "https://t.me/Hellspotbot?start=claim_" + token;
 
         let timeLeft = 40;
         const timerElement = document.getElementById('timer');
         let isTabActive = true;
+
         timerElement.innerText = t.remain + timeLeft + t.sec;
 
         document.addEventListener("visibilitychange", function() {
